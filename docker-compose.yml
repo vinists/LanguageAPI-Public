@@ -1,0 +1,22 @@
+version: "3.9"
+services:
+  languageapi:
+    container_name: languageapi
+    build: 
+      context: ./LanguageApi
+    ports:
+      - "4454:4454"
+    volumes:
+      - ./LanguageApi:/app
+    environment:
+      OPENAI_API_KEY: ${openai}
+      runpod_apikey: ${runpod_apikey}
+      elevenlabs_apikey: ${elevenlabs_apikey}
+      redish: ${redish}
+      redisp: ${redisp}
+      AWS_ACCESS_KEY_ID:  ${aws_access_key_id}
+      AWS_SECRET_ACCESS_KEY: ${aws_secret_access_key}
+      s3_bucket: ${s3_bucket}
+      AWS_DEFAULT_REGION: ${aws_region}
+
+    restart: "unless-stopped"
